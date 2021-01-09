@@ -77,30 +77,32 @@
             var saltBytes = new byte[] { 1, 2, 3, 4, 5, 6, 7, 8 };
 
             using (MemoryStream ms = new MemoryStream())
+            using (RijndaelManaged AES = new RijndaelManaged())
             {
-                using (RijndaelManaged AES = new RijndaelManaged())
-                {
 #if NETSTANDARD2_0
                     using var key = new Rfc2898DeriveBytes(passwordBytes, saltBytes, 1000);
 #else
-                    using var key = new Rfc2898DeriveBytes(passwordBytes, saltBytes, 1000, HashAlgorithmName.SHA256);
+                using var key = new Rfc2898DeriveBytes(passwordBytes, saltBytes, 1000, HashAlgorithmName.SHA256);
 #endif
 
-                    AES.KeySize = 256;
-                    AES.BlockSize = 128;
-                    AES.Key = key.GetBytes(AES.KeySize / 8);
-                    AES.IV = key.GetBytes(AES.BlockSize / 8);
+                AES.KeySize = 256;
+                AES.BlockSize = 128;
+                AES.Key = key.GetBytes(AES.KeySize / 8);
+                AES.IV = key.GetBytes(AES.BlockSize / 8);
 
-                    AES.Mode = CipherMode.CBC;
+                AES.Mode = CipherMode.CBC;
 
-                    using (var cs = new CryptoStream(ms, AES.CreateEncryptor(), CryptoStreamMode.Write))
-                    {
-                        await cs.WriteAsync(bytesToBeEncrypted, 0, bytesToBeEncrypted.Length).ConfigureAwait(true);
-                        cs.Close();
-                    }
-
-                    encryptedBytes = ms.ToArray();
+                using (var cs = new CryptoStream(ms, AES.CreateEncryptor(), CryptoStreamMode.Write))
+                {
+#if NETSTANDARD2_0
+                    await cs.WriteAsync(bytesToBeEncrypted, 0, bytesToBeEncrypted.Length).ConfigureAwait(true);
+#else
+                    await cs.WriteAsync(bytesToBeEncrypted).ConfigureAwait(true);
+#endif
+                    cs.Close();
                 }
+
+                encryptedBytes = ms.ToArray();
             }
 
             return encryptedBytes;
@@ -132,7 +134,11 @@
 
                     using (var cs = new CryptoStream(ms, AES.CreateDecryptor(), CryptoStreamMode.Write))
                     {
+#if NETSTANDARD2_0
                         await cs.WriteAsync(bytesToBeDecrypted, 0, bytesToBeDecrypted.Length).ConfigureAwait(true);
+#else
+                        await cs.WriteAsync(bytesToBeDecrypted).ConfigureAwait(true);
+#endif
                         cs.Close();
                     }
 
