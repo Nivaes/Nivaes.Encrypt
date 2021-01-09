@@ -10,7 +10,7 @@
     <RootNamespace>Nivaes</RootNamespace>
     <GeneratePackageOnBuild Condition="'$(Configuration)' == 'Release'">true</GeneratePackageOnBuild>
     <Product>Encrypt utils</Product>
-    <Description>Encrypt utrils.</Description>
+    <Description>Encrypt utils.</Description>
     <PackageTags>Nivaes;Encrypt</PackageTags>
   </PropertyGroup>
 
