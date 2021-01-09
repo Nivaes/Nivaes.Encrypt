@@ -1,12 +1,9 @@
-﻿
-namespace Nivaes.Encrypt.UnitTest
+﻿namespace Nivaes.Encrypt.UnitTest
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Text;
-    using Xunit;
-    using FluentAssertions;
     using System.Threading.Tasks;
+    using FluentAssertions;
+    using Nivaes.DataTestGenerator.Xunit;
+    using Xunit;
 
     [Trait("TestType", "Unit")]
     public class EncryptTest
@@ -41,5 +38,19 @@ namespace Nivaes.Encrypt.UnitTest
 
             decryptMessage.Should().Be(message);
         }
+
+        //[Theory]
+        //[GenerateStringInlineData(DataNumber = 3, MinSize = 35, MaxSize = 66)]
+        //public async Task AsyncLazySuccess3(string message)
+        //{
+        //    string pass = "938!·";
+        //    var encriptedMessage = await EncryptHelper.Encrypt(message, pass).ConfigureAwait(true);
+
+        //    encriptedMessage.Should().NotBeNull();
+
+        //    var decryptMessage = await EncryptHelper.Decrypt(encriptedMessage, pass).ConfigureAwait(true);
+
+        //    decryptMessage.Should().Be(message);
+        //}
     }
 }
