@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard2.0;netstandard2.1;net5.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;netstandard2.1;net5.0;net6.0</TargetFrameworks>
     <ProduceReferenceAssembly>true</ProduceReferenceAssembly>
 
     <PackageId>Nivaes.Encrypt</PackageId>
@@ -9,8 +9,8 @@
     <AssemblyName>Nivaes.Encrypt</AssemblyName>
     <RootNamespace>Nivaes</RootNamespace>
     <GeneratePackageOnBuild Condition="'$(Configuration)' == 'Release'">true</GeneratePackageOnBuild>
-    <Product>Encrypt utils</Product>
-    <Description>Encrypt utils.</Description>
+    <Product>Encryption helper</Product>
+    <Description>Encrypt helper.</Description>
     <PackageTags>Nivaes;Encrypt</PackageTags>
   </PropertyGroup>
 

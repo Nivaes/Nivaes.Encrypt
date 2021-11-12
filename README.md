@@ -1,5 +1,21 @@
-# Async Utils
-EncryptHelper
+# Encrypt helper
+
+Encryption helper.
+
+``` C#
+var message = "hello world.";
+var pass = "secret phrase";
+
+var encriptedMessage = await EncryptHelper.Encrypt(message, pass);
+
+var decryptMessage = await EncryptHelper.Decrypt(encriptedMessage, "pass");
+```
+
+## Packages
+
+| NuGet Package | Latest Versions |
+| --- | --- |
+| [Nivaes.DataTestGenerator](https://www.nuget.org/packages/Nivaes.Encrypt) <br /> Encryption helper | [![latest stable version](https://img.shields.io/nuget/v/Nivaes.Encrypt.svg)](https://www.nuget.org/packages/Nivaes.Encrypt) |
 
 ### Actions
 
