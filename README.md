@@ -15,7 +15,7 @@ var decryptMessage = await EncryptHelper.Decrypt(encriptedMessage, "pass");
 
 | NuGet Package | Latest Versions |
 | --- | --- |
-| [Nivaes.DataTestGenerator](https://www.nuget.org/packages/Nivaes.Encrypt) <br /> Encryption helper | [![latest stable version](https://img.shields.io/nuget/v/Nivaes.Encrypt.svg)](https://www.nuget.org/packages/Nivaes.Encrypt) |
+| [Nivaes.Encrypt](https://www.nuget.org/packages/Nivaes.Encrypt) <br /> Encryption helper | [![latest stable version](https://img.shields.io/nuget/v/Nivaes.Encrypt.svg)](https://www.nuget.org/packages/Nivaes.Encrypt) |
 
 ### Actions
 
