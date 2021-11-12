@@ -8,7 +8,7 @@ var pass = "secret phrase";
 
 var encriptedMessage = await EncryptHelper.Encrypt(message, pass);
 
-var decryptMessage = await EncryptHelper.Decrypt(encriptedMessage, "pass");
+var decryptMessage = await EncryptHelper.Decrypt(encriptedMessage, pass);
 ```
 
 ## Packages
